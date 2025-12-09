@@ -12,11 +12,14 @@ export function CartProvider({ children }) {
   //create cart
   useEffect(() => {
     let existingId = localStorage.getItem("cartId");
-    if (!existingId) {
+    if (!existingId) 
+      {
 
-      if (window.crypto?.randomUUID) {
+      if (window.crypto?.randomUUID) 
+      {
         existingId = window.crypto.randomUUID();
-      } else {
+      } else 
+      {
         existingId = "cart_" + Math.random().toString(36).slice(2);
       }
       localStorage.setItem("cartId", existingId);

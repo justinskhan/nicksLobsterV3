@@ -90,12 +90,14 @@ nav ul li a:hover
     transition: color 220ms ease-in-out;
 }
 
-.cart-link-wrapper {
+.cart-link-wrapper 
+{
   position: relative;
 }
 
 /*cart update for items*/
-.cart-badge {
+.cart-badge 
+{
   position: absolute;
   top: -6px;  
   right: -10px;    
