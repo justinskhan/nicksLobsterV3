@@ -11,6 +11,8 @@ app.use(cors()); //helps with react calling api
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB_NAME || "nicks-lobster";
 
+console.log("Using Mongo URI:", uri);
+
 let db;
 const client = new MongoClient(uri);
 
