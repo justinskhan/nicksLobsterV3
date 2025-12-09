@@ -94,11 +94,11 @@ nav ul li a:hover
   position: relative;
 }
 
-/* cart update for items */
+/*cart update for items*/
 .cart-badge {
   position: absolute;
-  top: -6px;       /* tweak to position */
-  right: -10px;    /* tweak to position */
+  top: -6px;  
+  right: -10px;    
   background-color: #ff3b30;
   color: #fff;
   border-radius: 999px;
@@ -110,8 +110,99 @@ nav ul li a:hover
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #ffffff; /* thin light border like your example */
+  border: 2px solid #ffffff; 
   box-sizing: border-box;
+}
+
+/*hamburger icon implementation*/
+.hamburger 
+{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.hamburger span 
+{
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+.hamburger.open span:nth-child(1) 
+{
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) 
+{
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) 
+{
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 600px) 
+{
+    nav 
+    {
+        height: 70px;
+        padding: 0 12px;
+        align-items: center;
+    }
+
+    nav .myLogo img 
+    {
+        width: 80px;
+    }
+
+    /*hiding the words for the icon*/
+    .hamburger 
+    {
+        display: flex;
+        margin-left: auto;
+        background: transparent;
+    }
+    /*only puts hamburger icon on mobile*/
+    nav ul 
+    {
+        display: none; 
+    }
+
+    /*hamburger dropdown */
+    nav ul.nav-links.open 
+    {
+        display: flex;
+        position: absolute;
+        top: 70px;
+        right: 12px;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 12px;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        width: 220px;
+        z-index: 200;
+    }
+
+    nav ul.nav-links.open li 
+    {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav ul.nav-links.open li a 
+    {
+        font-size: 18px;
+    }
 }
 
 /*Banner*/
@@ -239,3 +330,4 @@ nav ul li a:hover
          text-align: center; 
     }
 }
+
