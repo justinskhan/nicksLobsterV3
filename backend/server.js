@@ -80,6 +80,53 @@ app.get("/menuitems/:id", async (req, res) =>
   }
 });
 
+// Cart Section
+
+app.get("/carts/:cartId", async (req, res) => {
+  try {
+    const { cartId } = req.params;
+    const collection = db.collection("carts");
+
+    const cartDoc = await collection.findOne({ cartId });
+
+    if (!cartDoc) {
+      //case of when there is no cart
+      return res.json({ cartId, items: [], updatedAt: null });
+    }
+
+    res.json(cartDoc);
+  } catch (err) {
+    console.error("Error fetching cart:", err);
+    res.status(500).json({ error: "Error fetching cart" });
+  }
+});
+
+app.put("/carts/:cartId", async (req, res) => {
+  try {
+    const { cartId } = req.params;
+    const { items } = req.body; 
+
+    const collection = db.collection("carts");
+
+    const result = await collection.updateOne(
+      { cartId },
+      {
+        $set: {
+          cartId,
+          items,
+          updatedAt: new Date().toISOString(),
+        },
+      },
+      { upsert: true }
+    );
+
+    res.json({ message: "Cart saved" });
+  } catch (err) {
+    console.error("Error saving cart:", err);
+    res.status(500).json({ error: "Error saving cart" });
+  }
+});
+
 //Order Section
 
 //post for order creations
