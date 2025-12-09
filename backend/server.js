@@ -7,8 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(cors()); //helps with react calling api
 
-//connections via uri and dbname
-const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017";
+//connections via uri and dbname / may need to be changed
+const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB_NAME || "nicks-lobster";
 
 let db;
