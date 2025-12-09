@@ -14,12 +14,15 @@ const dbName = process.env.MONGODB_DB_NAME || "nicks-lobster";
 let db;
 const client = new MongoClient(uri);
 
-async function connectToDatabase() {
-  try {
+async function connectToDatabase() 
+{
+  try 
+  {
     await client.connect();
     db = client.db(dbName);
     console.log(`✅ Connected to MongoDB database: ${dbName}`);
-  } catch (err) {
+  } catch (err) 
+  {
     console.error("❌ MongoDB connection failed", err);
     process.exit(1);
   }
@@ -28,15 +31,18 @@ async function connectToDatabase() {
 connectToDatabase();
 
 //ensuring that we are properly connected to the correct db
-app.get("/", (req, res) => {
+app.get("/", (req, res) => 
+{
   res.send("Nick's Lobster backend is running with MongoDB!");
 });
 
 // Menu Section
 
 //new way to get all the items no longer in front end
-app.get("/menuitems", async (req, res) => {
-  try {
+app.get("/menuitems", async (req, res) => 
+  {
+  try 
+  {
     const collection = db.collection("menuitems");
 
     const items = await collection
@@ -46,15 +52,18 @@ app.get("/menuitems", async (req, res) => {
       .toArray();
 
     res.json(items);
-  } catch (err) {
+  } catch (err) 
+  {
     console.error(err);
     res.status(500).send("Error fetching menu items");
   }
 });
 
 //we find items using the id assigned to each item
-app.get("/menuitems/:id", async (req, res) => {
-  try {
+app.get("/menuitems/:id", async (req, res) => 
+  {
+  try 
+  {
     const numericId = Number(req.params.id);
     const collection = db.collection("menuitems");
 
@@ -62,7 +71,8 @@ app.get("/menuitems/:id", async (req, res) => {
 
     if (!item) return res.status(404).send("Menu item not found");
     res.json(item);
-  } catch (err) {
+  } catch (err) 
+  {
     console.error(err);
     res.status(500).send("Error fetching menu item");
   }
@@ -71,8 +81,10 @@ app.get("/menuitems/:id", async (req, res) => {
 //Order Section
 
 //post for order creations
-app.post("/orders", async (req, res) => {
-  try {
+app.post("/orders", async (req, res) => 
+  {
+  try 
+  {
     const order = req.body;
     console.log("Incoming order payload:", order);
 
@@ -95,19 +107,23 @@ app.post("/orders", async (req, res) => {
         orderId: result.insertedId,
         orderNumber: orderWithNumber.orderNumber,
       });
-  } catch (err) {
+  } catch (err) 
+  {
     console.error("Error in POST /orders:", err);
     res.status(500).send("Error creating order");
   }
 });
 
 //collecting all orders after being placed
-app.get("/orders", async (req, res) => {
-  try {
+app.get("/orders", async (req, res) => 
+{
+  try 
+  {
     const collection = db.collection("orders");
     const orders = await collection.find({}).toArray();
     res.json(orders);
-  } catch (err) {
+  } catch (err) 
+  {
     console.error(err);
     res.status(500).send("Error fetching orders");
   }
