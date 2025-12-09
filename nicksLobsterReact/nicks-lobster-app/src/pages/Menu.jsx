@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 
 //may need to change for atlas
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3006";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function Menu() {
   const { addToCart } = useContext(CartContext);
