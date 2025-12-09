@@ -90,6 +90,30 @@ nav ul li a:hover
     transition: color 220ms ease-in-out;
 }
 
+.cart-link-wrapper {
+  position: relative;
+}
+
+/* cart update for items */
+.cart-badge {
+  position: absolute;
+  top: -6px;       /* tweak to position */
+  right: -10px;    /* tweak to position */
+  background-color: #ff3b30;
+  color: #fff;
+  border-radius: 999px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff; /* thin light border like your example */
+  box-sizing: border-box;
+}
+
 /*Banner*/
 .heroImg 
 {
