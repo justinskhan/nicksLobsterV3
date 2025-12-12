@@ -129,3 +129,26 @@
 {
   background: #ffffff;
 }
+
+.place-order-btn {
+  background: #821c1c;   
+  color: #ffffff !important;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 16px;
+  text-decoration: none;
+}
+
+.place-order-btn:hover,
+.place-order-btn:active,
+.place-order-btn:focus,
+.place-order-btn:visited 
+{
+  color: #ffffff !important;
+  text-decoration: none;
+  background: #a22a2a; /* optional hover color */
+}
