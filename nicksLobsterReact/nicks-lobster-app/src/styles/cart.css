@@ -130,7 +130,8 @@
   background: #ffffff;
 }
 
-.place-order-btn {
+.place-order-btn 
+{
   background: #821c1c;   
   color: #ffffff !important;
   border: none;
@@ -150,5 +151,5 @@
 {
   color: #ffffff !important;
   text-decoration: none;
-  background: #a22a2a; /* optional hover color */
+  background: #a22a2a; 
 }
