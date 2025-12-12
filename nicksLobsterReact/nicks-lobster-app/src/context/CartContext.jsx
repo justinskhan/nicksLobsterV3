@@ -4,7 +4,8 @@ export const CartContext = createContext();
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export function CartProvider({ children }) {
+export function CartProvider({ children }) 
+{
   const [cart, setCart] = useState([]);
   const [cartId, setCartId] = useState(null);
   const [loaded, setLoaded] = useState(false); //making sure to load before auto-saving
@@ -28,24 +29,31 @@ export function CartProvider({ children }) {
   }, []);
 
   //load cart from backend
-  useEffect(() => {
+  useEffect(() => 
+  {
     if (!cartId) return;
 
-    async function loadCart() {
-      try {
+    async function loadCart() 
+    {
+      try 
+      {
         const res = await fetch(`${API_BASE_URL}/carts/${cartId}`);
-        if (!res.ok) {
+        if (!res.ok) 
+        {
           console.error("Failed to load cart:", res.status);
           setLoaded(true);
           return;
         }
         const data = await res.json();
-        if (Array.isArray(data.items)) {
+        if (Array.isArray(data.items)) 
+        {
           setCart(data.items);
         }
-      } catch (err) {
+      } catch (err) 
+      {
         console.error("Error loading cart:", err);
-      } finally {
+      } finally 
+      {
         setLoaded(true);
       }
     }
@@ -54,17 +62,22 @@ export function CartProvider({ children }) {
   }, [cartId]);
 
   //saving changes to cart in the backend
-  useEffect(() => {
+  useEffect(() => 
+  {
     if (!loaded || !cartId) return;
 
-    async function saveCart() {
-      try {
-        await fetch(`${API_BASE_URL}/carts/${cartId}`, {
+    async function saveCart() 
+    {
+      try 
+      {
+        await fetch(`${API_BASE_URL}/carts/${cartId}`, 
+        {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items: cart }),
         });
-      } catch (err) {
+      } catch (err) 
+      {
         console.error("Error saving cart:", err);
       }
     }
@@ -73,10 +86,13 @@ export function CartProvider({ children }) {
   }, [cart, cartId, loaded]);
 
     //adding an item to cart
-  const addToCart = (item) => {
-    setCart((prev) => {
+  const addToCart = (item) => 
+  {
+    setCart((prev) => 
+    {
       const existing = prev.find((cartItem) => cartItem.id === item.id);
-      if (existing) {
+      if (existing) 
+      {
         return prev.map((cartItem) =>
           cartItem.id === item.id
             ? {
@@ -90,7 +106,8 @@ export function CartProvider({ children }) {
     });
   };
   //functionality for incrementing or decrementing
-  const updateQuantity = (id, delta) => {
+  const updateQuantity = (id, delta) => 
+  {
     setCart((prev) =>
       prev
         .map((cartItem) =>
@@ -105,7 +122,8 @@ export function CartProvider({ children }) {
     );
   };
 
-  const clearCart = () => {
+  const clearCart = () => 
+  {
     setCart([]);
   };
 

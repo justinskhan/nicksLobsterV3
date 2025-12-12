@@ -4,29 +4,36 @@ import Footer from "../components/Footer";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 
-//may need to change for atlas
+//may need to change for atlas 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export default function Menu() {
+export default function Menu() 
+{
   const { addToCart } = useContext(CartContext);
-
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function fetchMenu() {
-      try {
+  useEffect(() => 
+  {
+    async function fetchMenu() 
+    {
+      try 
+      {
         const res = await fetch(`${API_BASE_URL}/menuitems`);
         if (!res.ok) {
           throw new Error("Failed to fetch menu items");
         }
         const data = await res.json();
         setItems(data);
-      } catch (err) {
+        //if th menu cant be fetched from db throw error
+      } catch (err) 
+      {
         console.error(err);
         setError("There was a problem loading the menu. Please try again later.");
-      } finally {
+        //loading is complete
+      } finally 
+      {
         setLoading(false);
       }
     }

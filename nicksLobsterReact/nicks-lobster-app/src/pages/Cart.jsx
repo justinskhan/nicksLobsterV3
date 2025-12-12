@@ -109,7 +109,7 @@ export default function Cart() {
             </ul>
             <p className="cart-total">Total: ${total.toFixed(2)}</p>
 
-            {/* Place Order button */}
+            {/*button to place orders / need to style*/}
             <button className="place-order-btn" onClick={handlePlaceOrder}>
               Place Order
             </button>

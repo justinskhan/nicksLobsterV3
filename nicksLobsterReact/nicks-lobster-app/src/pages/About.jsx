@@ -28,7 +28,7 @@ export default function About()
             including an outdoor deck that all faces the Mill Basin waterfront, and is still owned by the same family that decided to sell lobsters on Flatbush Ave over
             60 years ago. Nick's Lobster House is now run by General Manager and Executive Chef Dimitrios Karousis.
           </p>
-          {/* meant to go under text*/}
+          {/*meant to go under text*/}
           <img src="/images/outside.webp" alt="Nick's Lobster exterior" />
         </div>
       </section>
